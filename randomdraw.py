@@ -1,6 +1,11 @@
+"""
+A simple python file for randomly selecting names from a dictionary list
+Names drawn are considered winners of an art raffle.
+"""
+
 import random
 
-def main(user_dict):
+def main(user_dict, limit):
     banner = ["++++++++++++++++++++++++++++++",
               "+ Art Raffle Random Selector +",
               "++++++++++++++++++++++++++++++"]
@@ -8,7 +13,7 @@ def main(user_dict):
         print(row)
     print()
     while True:
-        winners = draw_winner(user_dict)
+        winners = draw_winner(user_dict, limit)
         output(winners)
         catcher = input("Again? (Press any key to quit): ")
         if catcher != "":
@@ -17,13 +22,13 @@ def main(user_dict):
         else:
             print("\nContinuing...\n")
         
-def draw_winner(user_dict):
+def draw_winner(user_dict, limit):
     count = 0
     selector = None
     used_int = []
     length = len(user_dict)
     winners = []
-    while count < 3:
+    while count < limit:
         count += 1
         selector = random.randint(1, length)
         if selector in used_int:
@@ -54,5 +59,6 @@ user_dict = {1:"", 2:"",
              15:"", 16:"",
              17:"", 18:"",
              19:"", 20:""}
+win_count = 2
 
-main(user_dict)
+main(user_dict, win_count)
