@@ -32,8 +32,7 @@ def draw_winner(user_dict, limit):
         count += 1
         selector = random.randint(1, length)
         if selector in used_int:
-            temp = selector
-            while selector == temp:
+            while selector in used_int:
                 selector = random.randint(1, length)
         winners.append(user_dict[selector])
         used_int.append(selector)
